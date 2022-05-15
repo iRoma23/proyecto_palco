@@ -1,3 +1,7 @@
+/**
+ * Modelo Usuario
+ */
+
 const mongoose = require('mongoose')
 
 // Direccion de la base de datos

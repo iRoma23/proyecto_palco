@@ -1,3 +1,7 @@
+/**
+ * Modelo Reserva
+ */
+
 const mongoose = require('mongose')
 
 // Direccion de la base de datos
