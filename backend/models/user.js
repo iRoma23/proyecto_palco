@@ -16,6 +16,23 @@ let UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  email: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  phone: {
+    type: Number,
+    required: false
+  },
+  city: {
+    type: String,
+    required: false
+  }
+
   // owner: {
   //   type: Boolean,
   //   required: true

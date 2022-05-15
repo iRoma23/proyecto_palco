@@ -21,6 +21,10 @@ let PrivateBoxSchema = mongoose.Schema({
   owner: {
     type: SchemaTypes.ObjectId,
     ref: 'owner'
+  },
+  category: {
+    type: String,
+    required: true
   }
 })
 

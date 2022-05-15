@@ -16,6 +16,22 @@ let OwnerSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  name:{
+    type: String,
+    required: true
+  },
+  document:{ //DNI
+    type: Number,
+    required: true
+  },
+  property_number: {
+    type: Number,
+    required: true
+  },
+  estadio: {
+    type: String,
+    required: true
+  }
 })
 
 let OwnerModel = mongoose.model('privateBox', OwnerSchema)

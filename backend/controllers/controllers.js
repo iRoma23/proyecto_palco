@@ -21,6 +21,17 @@ class UserController {
   })
 
   }
+  static list(req, res) { 
+    UserModel.findAll()  //funcion callback
+        .then((result) => {
+            res.status(200).send(result)
+        })
+        .catch((err) =>{
+            res.status(404).send({
+                message: err.message
+            })
+        })
+}
 
 }
 
