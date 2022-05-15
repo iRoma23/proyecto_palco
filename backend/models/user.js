@@ -12,12 +12,12 @@ let UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  owner: {
-    type: Boolean,
-    required: true
-  }
+  // owner: {
+  //   type: Boolean,
+  //   required: true
+  // }
 })
 
-let UserModel = mongoose.model('privateBox', UserSchema)
+let UserModel = mongoose.model('user', UserSchema)
 
 module.exports = { UserModel }

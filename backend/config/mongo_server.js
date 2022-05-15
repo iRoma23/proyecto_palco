@@ -10,9 +10,9 @@ const dbConnect = () => {
         useUnifiedTopology: true 
     }, (err) => {
         if (err) {
-            console.log('***** Conexion a la BD exitosa *****')
+            console.log('***** Error de conexion a la BD *****')
         } else {
-            console.log('***** Error de conexion a la BD *****');
+            console.log('***** Conexion a la BD exitosa *****');
         }
     });
 }
