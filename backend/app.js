@@ -1,4 +1,13 @@
-const { UserController } = require('./controllers/controllers');
+/**
+ * Controllers de prueba
+ * ------------------------------------------------
+ */
+
+const { UserController } = require('./controllers/user_controller');
+
+/**
+ * ------------------------------------------------
+ */
 
 //requerir el paquete para leer las variables de entorno
 require('dotenv').config();
@@ -26,7 +35,17 @@ app.use('/api', (req, res) => {
     
 });
 
+/**
+ * Rutas de pruebas
+ * ------------------------------------------------
+ */
+
+app.get('/users', UserController.findAll)
 app.post('/signup', UserController.create)
+
+ /**
+  * ------------------------------------------------
+  */
 
 //iniciar el servidor para escuchar la conexión
 app.listen(port, () => { console.log(`listening http://localhost:${port}`);
