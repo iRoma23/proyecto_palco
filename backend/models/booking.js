@@ -7,9 +7,19 @@ const mongoose = require('mongose')
 // Direccion de la base de datos
 // mongoose.connect('')
 
+const SchemaTypes = mongoose.Schema.Types
+
 BookingSchema = mongoose.Schema({
-  date: {
-    type: Number,
+  booked: {
+    type: Boolean,
     required: true,
+  },
+  event: {
+    type: SchemaTypes.ObjectId,
+    ref: 'event'
   }
 })
+
+let BookingBoxModel = mongoose.model('booking', BookingBoxSchema)
+
+module.exports = { BookingBoxModel }
