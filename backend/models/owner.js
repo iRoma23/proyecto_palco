@@ -16,21 +16,33 @@ let OwnerSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  box: {
+    type: String,
+    required: true
+  },
+  stadium: {
+    type: String,
+    required: true
+  },
   name:{
     type: String,
     required: true
   },
-  document:{ //DNI
+  dni:{ //DNI
     type: Number,
     required: true
   },
-  property_number: {
+  email:{
     type: Number,
     required: true
   },
-  estadio: {
-    type: String,
+  phone: {
+    type: Number,
     required: true
+  },
+  booking: {
+    type: SchemaTypes.ObjectId,
+    ref: 'booking'
   }
 })
 

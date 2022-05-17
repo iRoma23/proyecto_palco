@@ -27,7 +27,6 @@ app.use('/api', (req, res) => {
 });
 
 app.post('/signup', UserController.create)
-app.get('/users', UserController.list)
 
 //iniciar el servidor para escuchar la conexión
 app.listen(port, () => { console.log(`listening http://localhost:${port}`);
