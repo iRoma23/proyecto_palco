@@ -2,7 +2,7 @@
  * Modelo Reserva
  */
 
-const mongoose = require('mongose')
+const mongoose = require('mongoose')
 
 // Direccion de la base de datos
 // mongoose.connect('')
@@ -20,6 +20,6 @@ BookingSchema = mongoose.Schema({
   }
 })
 
-let BookingBoxModel = mongoose.model('booking', BookingBoxSchema)
 
-module.exports = { BookingBoxModel }
+
+module.exports = mongoose.model('booking', BookingSchema)

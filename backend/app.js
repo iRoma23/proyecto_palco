@@ -1,4 +1,4 @@
-const { UserController } = require('./controllers/controllers');
+// const { UserController } = require('./controllers/controllers');
 
 //requerir el paquete para leer las variables de entorno
 require('dotenv').config();
@@ -21,12 +21,8 @@ app.use(cors());
 //invocamos a las rutas
 // app.use(bodyParser.json())
 app.use(express.json());
-app.use('/api', (req, res) => {
-    res.send('hola mundo desde nodejs...');
-    
-});
+app.use('/api', require('./routes'))
 
-app.post('/signup', UserController.create)
 
 //iniciar el servidor para escuchar la conexión
 app.listen(port, () => { console.log(`listening http://localhost:${port}`);
