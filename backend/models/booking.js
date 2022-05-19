@@ -9,15 +9,20 @@ const mongoose = require('mongoose')
 
 const SchemaTypes = mongoose.Schema.Types
 
-BookingSchema = mongoose.Schema({
+BookingSchema = new mongoose.Schema({
   booked: {
-    type: Boolean,
-    required: true,
-  },
+    type: ['Disponible', 'Reservado'],
+    default: 'Disponible'
+  }, 
+
   event: {
+    // type: mongoose.Types.ObjectId,
     type: SchemaTypes.ObjectId,
-    ref: 'event'
-  }
+    ref:'event'
+  
+  },
+  
+
 })
 
 

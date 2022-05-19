@@ -34,6 +34,11 @@ let UserSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+
+  roles:{
+    type:['Cliente', 'Propietario']
+  },
+  
   booking: {
     type: SchemaTypes.ObjectId,
     ref: 'booking'

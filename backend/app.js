@@ -1,26 +1,28 @@
-// const { UserController } = require('./controllers/controllers');
 
 //requerir el paquete para leer las variables de entorno
 require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
 
 //requerimos el config del mongo_server
 const dbConnect = require('./config/mongo_server');
+
 
 
 //establecer la conexion al servidor
 const app = express();
 const port = process.env.PORT || 3000;
 
+//definimos la ruta publica para las imagenes
+// app.use('/media', express.static(path.resolve('media')));
+app.use(express.static('media'));
 //invocamos al cors para hacer peticiones desde el servidor
 app.use(cors());
 
 //invocamos a las rutas
-// app.use(bodyParser.json())
 app.use(express.json());
+
 app.use('/api', require('./routes'))
 
 

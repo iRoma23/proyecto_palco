@@ -1,10 +1,17 @@
 //importamos el modelo de event
 const { eventModel } = require('../models')
 
+
+//importamos el file system
+const fs = require('fs')
+const path = require('path')
+
 const getEvents = async (req, res) => {
     try {
-        const data = await eventModel.find({})
-        res.send({ data, 'message': 'Lista de eventos' })
+        const event = await eventModel.find()
+        // res.json(event)        
+        res.send({ event, 'message': 'Lista de eventos' })
+
     } catch (error) {
         res.status(404).send({ message: 'Error al obtener los eventos' })
     }
@@ -13,10 +20,11 @@ const getEvents = async (req, res) => {
 
 const getEvent = async (req, res) => {
     try {
+        const pk = req.params.id
 
-        const { id } = req
-        const data = await eventModel.findOne(id)//findById
-        res.send({ data, 'message': 'lista evento detalle' })
+        const event = await eventModel.findById(pk)
+        res.send({ event, 'message': 'lista evento detalle' })
+
     } catch (error) {
         res.status(404).send({ message: 'Error al obtener el evento' })
     }
@@ -25,42 +33,79 @@ const getEvent = async (req, res) => {
 
 const createEvent = async (req, res) => {
     try {
-    const { body } = req
-    const data = await eventModel.create(body)
-    console.log(body)
-    res.send({ data, 'message': 'Evento creado' })
+        const { eventname, date, stadium, description } = req.body
+        const image = req.file
 
+        if(image){
+            const event = await eventModel.create({
+                eventname,
+                date,
+                stadium,
+                description,
+                image: image.path
+            })
+            await event.save()
+            res.send({ event, 'message': 'Evento creado' })
+        }else{
+            const event = await eventModel.create({
+                eventname,
+                date,
+                stadium,
+                description,
+                image: null
+                
+            })
+            await event.save()            
+            res.send({ event, 'message': 'Evento creado' })
+        }
+       
     } catch (error) {
-        res.status(404).send({message: 'Error al crear el evento'})
+        res.status(404).send({ message: 'Error al crear el evento' })
     }
 }
 
 const deleteEvent = async (req, res) => {
     try {
-        const {id} = req.params
-        
-        const data = await eventModel.deleteOne({_id:id})
-        
-        res.send({ data, 'message': 'Evento eliminado' })
-        
+        const pk = req.params.id
+        const event = await eventModel.findByIdAndDelete(pk)
+
+        if (event) {
+            await fs.unlinkSync(path.resolve(event.image))
+            res.send({ event, 'message': 'Evento eliminado' })
+        }
+       
     } catch (error) {
         res.status(404).send({ message: 'Error al eliminar el evento' })
     }
-
 
 }
 
 const updateEvent = async (req, res) => {
     try {
-        
-        const {id} = req.params              
-        const {body} = req         
-     
-        const data = await eventModel.updateOne({id:id}, body)
-        res.send({ data, 'message': 'Evento Actualizado'})
+
+        const pk = req.params.id
+        const { eventname, date, stadium, description } = req.body
+        const image = req.file
+
+        if (image) {
+            const event = await eventModel.findByIdAndUpdate(
+                pk,
+                { eventname, date, stadium, description, image: req.file.path },
+                { new: true }
+            )
+            res.send({ event, 'message': 'Evento Actualizado' })
+        } else {
+            const event = await eventModel.findByIdAndUpdate(
+                pk,
+                { eventname, date, stadium, description },
+                { new: true }
+            )
+            res.send({ event, 'message': 'Evento Actualizado' })
+        }
+
     } catch (error) {
         res.status(404).send({ message: 'Error al actualizar el evento' })
-        // console.log(message)
+
     }
 }
 

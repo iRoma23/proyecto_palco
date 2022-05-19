@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 
 //requerimos el controlador
-const { getBooking, getBookings, createBooking } = require('../controllers/bookingControllers');
+const { getBookings, getBooking, createBooking, deleteBooking, updateBooking } = require('../controllers/bookingControllers');
 
-router.get('/', getBookings, (req, res) => {
-    console.log('ruta get de booking')
-})
+router.get('/', getBookings)
 router.post('/', createBooking)
 router.get('/:id', getBooking)
+router.put('/:id',updateBooking)
+router.delete('/:id', deleteBooking)
 
 
 

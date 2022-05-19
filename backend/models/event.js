@@ -11,26 +11,21 @@ const EventSchema = new mongoose.Schema({
 
   eventname: { type: String },
 
-  //  image: {
-  //    type: String,
-  //    required: true
-  //  },
-
   date: { type: Date },
 
   stadium: { type: String },
 
   description: { type: String },
 
-  // mediaId: {
-  //   type: mongoose.Types.ObjectId,
-  // },
+  image: { type: String },
+    
+  
 
 },
 
   {
     timestamps: true
   })
- 
+
 
 module.exports = mongoose.model('event', EventSchema)
