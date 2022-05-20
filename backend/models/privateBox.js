@@ -16,16 +16,12 @@ let PrivateBoxSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  stadium: {
-    type: String,
-    required: true
-  },
   owner: {
     type: SchemaTypes.ObjectId,
     ref: 'owner'
   }
 })
 
-let PrivateBoxModel = mongoose.model('privateBox', PrivateBoxSchema)
+let PrivateBoxModel = mongoose.model('privatebox', PrivateBoxSchema)
 
 module.exports = { PrivateBoxModel }

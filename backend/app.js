@@ -4,6 +4,7 @@
  */
 
 const { UserController } = require('./controllers/user_controller');
+const { OwnerController } = require('./controllers/owner_controller')
 
 /**
  * ------------------------------------------------
@@ -39,6 +40,9 @@ app.use('/api', (req, res) => {
  * Rutas de pruebas
  * ------------------------------------------------
  */
+
+ app.post('/owners', OwnerController.create)
+ app.get('/owners', OwnerController.findAll)
 
 app.get('/users', UserController.findAll)
 app.post('/signup', UserController.create)

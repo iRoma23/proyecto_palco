@@ -1,16 +1,16 @@
 /**
- * Modelo Evento
+ * Modelo Stadium
  */
 
 const mongoose = require('mongoose')
 
 // Direccion de la base de datos
 // mongoose.connect('')
-
+ 
 const SchemaTypes = mongoose.Schema.Types
-
-let EventSchema = mongoose.Schema({
-  eventname: {
+ 
+let StadiumSchema = mongoose.Schema({
+  stadiumname: {
     type: String,
     required: true
   },
@@ -18,24 +18,16 @@ let EventSchema = mongoose.Schema({
   //    type: String,
   //    required: true
   //  },
-  date: {
+  city: {
     type: String,
     required: true
   },
-  stadium: {
+  privatebox: {
     type: SchemaTypes.ObjectId,
     ref: 'stadium'
-  },
-  description: {
-    type: String,
-    required: true
-  },
-  status: {
-   type: String,
-   required: true
   }
 })
- 
-let EventModel = mongoose.model('event', EventSchema)
- 
-module.exports = { EventModel }
+  
+let StadiumModel = mongoose.model('stadium', StadiumSchema)
+  
+module.exports = { StadiumModel }

@@ -18,36 +18,24 @@ let OwnerSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  box: {
-    type: String,
-    required: true
-  },
-  stadium: {
-    type: String,
-    required: true
-  },
   name: {
+    type: String,
+    required: true
+  },
+  email: {
     type: String,
     required: true
   },
   dni: {
     type: Number,
     required: true
-  },
-  email:{
-    type: Number,
-    required: true
-  },
-  phone: {
-    type: Number,
-    required: true
-  },
-  booking: {
-    type: SchemaTypes.ObjectId,
-    ref: 'booking'
   }
+  // document: {
+  //   type: Number,
+  //   required: true
+  // }
 })
 
-let OwnerModel = mongoose.model('privateBox', OwnerSchema)
+let OwnerModel = mongoose.model('owner', OwnerSchema)
 
 module.exports = { OwnerModel }

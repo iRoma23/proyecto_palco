@@ -3,13 +3,14 @@ const { UserModel } = require('../models/user')
 class UserController {
 
   static create(req, res) {
-      
+
     let username = req.body.username
     let password = req.body.password
     let name = req.body.name
     let dni = req.body.dni
     let email = req.body.email
     let phone = req.body.phone
+    let roles = req.body.roles
 
     let newUser = new UserModel({
       username: username,
@@ -17,7 +18,8 @@ class UserController {
       name: name,
       dni: dni,
       email: email,
-      phone: phone
+      phone: phone,
+      roles: roles
     })
 
     newUser.save((err) => {
@@ -29,10 +31,10 @@ class UserController {
           res.send("El usuario se ha registrado con exito!")
       }
     })
-
   }
 
   static findAll(req, res) {
+    
     UserModel.find({})
       .then((result) => {
         res.send(result)
