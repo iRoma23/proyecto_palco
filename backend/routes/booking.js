@@ -5,12 +5,13 @@ const router = express.Router();
 //requerimos el controlador
 const { getBookings, getBooking, createBooking, deleteBooking, updateBooking } = require('../controllers/bookingControllers');
 
-router.get('/', getBookings)
+const {authSession} = require('../middlewares/sessionMiddlewars');
+
+router.get('/', authSession, getBookings)
 router.post('/', createBooking)
+
 router.get('/:id', getBooking)
 router.put('/:id',updateBooking)
 router.delete('/:id', deleteBooking)
-
-
 
 module.exports = router;

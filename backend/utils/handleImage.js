@@ -1,11 +1,12 @@
 //estructuramos el manejador de archivos 
 const multer = require('multer')
+const PUBLIC_URL = process.env.PUBLIC_URL 
 
 const storage = multer.diskStorage({
     // destination: './media',
     // destination: `${__dirname}/../media`,
     destination: (req, file, cb) => {
-        const pathStorage = `${__dirname}/../media`;
+        const pathStorage = `./media`;
         cb(null, pathStorage);
     },
 

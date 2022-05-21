@@ -2,6 +2,9 @@
 //requerir el paquete para leer las variables de entorno
 require('dotenv').config();
 
+const path = require('path');
+
+
 const express = require('express');
 const cors = require('cors');
 
