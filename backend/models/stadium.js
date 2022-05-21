@@ -24,7 +24,7 @@ let StadiumSchema = mongoose.Schema({
   },
   privatebox: {
     type: SchemaTypes.ObjectId,
-    ref: 'stadium'
+    ref: 'privatebox'
   }
 })
   

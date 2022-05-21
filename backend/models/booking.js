@@ -17,6 +17,15 @@ BookingSchema = mongoose.Schema({
   event: {
     type: SchemaTypes.ObjectId,
     ref: 'event'
+  },
+  observacion: {
+    type: String,
+    required: true
+  },
+  credit: {
+    type: ['credito','debito'],
+    default: 'credito',
+    required: true
   }
 })
 

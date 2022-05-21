@@ -12,7 +12,11 @@ const mongoose = require('mongoose')
 const SchemaTypes = mongoose.Schema.Types
 
 let PrivateBoxSchema = mongoose.Schema({
-  box: {
+  boxnumber: {
+    type: String,
+    required: true
+  },
+  zone: {
     type: String,
     required: true
   },
