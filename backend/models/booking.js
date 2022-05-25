@@ -10,23 +10,26 @@ const mongoose = require('mongoose')
 const SchemaTypes = mongoose.Schema.Types
 
 const BookingSchema = new mongoose.Schema({
-  booked: {
-    type: ['Disponible', 'Reservado'],
-    default: 'Disponible'
-  }, 
-
-  event: {
-    
+  user: {
     type: SchemaTypes.ObjectId,
-    ref:'event'
-  
+    ref: 'user'
   },
-  
+  event: {
+    type: SchemaTypes.ObjectId,
+    ref: 'event'
+  },
+  observacion: {
+    type: String,
+    // required: true
+  },
+  credit: {
+    type: ['credito','debito'],
+    default: 'credito',
+    // required: true
+  }
 
 },{
   timestamps: true
 })
-
-
 
 module.exports = mongoose.model('booking', BookingSchema)

@@ -16,22 +16,15 @@ const UserSchema = new mongoose.Schema({
   password: { type: String },
  
   name: { type: String },
- 
-  dni: { type: Number },
-  
+    
   email:{ type: String },
- 
-  phone: { type: Number },
-  
+   
   roles:{
     type:['Cliente', 'Propietario'],
     default: 'Cliente'
   }
   
-  // booking: {
-  //   type: SchemaTypes.ObjectId,
-  //   ref: 'booking'
-  // }
+ 
 },{
   timestamps: true
 })

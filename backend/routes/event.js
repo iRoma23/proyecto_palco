@@ -13,10 +13,12 @@ const { checkRoles } = require('../middlewares/rolesMiddlewars')
 //requerimos el controlador
 const { getEvents, getEvent, createEvent, deleteEvent, updateEvent } = require('../controllers/eventControllers')
 
-router.get('/', authSession, getEvents)
+router.get('/',
+    // authSession,
+    getEvents)
 router.post('/',
-    authSession,
-    checkRoles(['Propietario']),
+    // authSession,
+    // checkRoles(['Propietario']),
     uploadFile.single('image'),
     createEvent
 )

@@ -12,11 +12,11 @@ const mongoose = require('mongoose')
 const SchemaTypes = mongoose.Schema.Types
 
 let PrivateBoxSchema = mongoose.Schema({
-  box: {
+  boxnumber: {
     type: String,
     required: true
   },
-  stadium: {
+  zone: {
     type: String,
     required: true
   },
@@ -24,8 +24,10 @@ let PrivateBoxSchema = mongoose.Schema({
     type: SchemaTypes.ObjectId,
     ref: 'owner'
   }
+}, {
+  timestamps: true
 })
 
-let PrivateBoxModel = mongoose.model('privateBox', PrivateBoxSchema)
 
-module.exports = { PrivateBoxModel }
+
+module.exports = mongoose.model('privateBox', PrivateBoxSchema)

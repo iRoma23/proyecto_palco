@@ -7,7 +7,7 @@ const { getBookings, getBooking, createBooking, deleteBooking, updateBooking } =
 
 const {authSession} = require('../middlewares/sessionMiddlewars');
 
-router.get('/', authSession, getBookings)
+router.get('/', getBookings)
 router.post('/', createBooking)
 
 router.get('/:id', getBooking)

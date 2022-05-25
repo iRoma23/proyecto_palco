@@ -6,7 +6,6 @@ const getBookings = async (req, res) => {
   try {
     const data = await bookingModel.find().populate('event', {
       eventname:1,
-      stadium:1,
       date:1,
       image:1
     })
@@ -22,10 +21,12 @@ const getBooking = async (req, res) => {
   try {
     const pk= req.params.id
     const data = await bookingModel.findById(pk).populate('event', {
-      eventname:1,
-      stadium:1,
+      eventname:1,      
+      image:1,
       date:1,
-      image:1
+      price:1,
+      stadium:1,
+
     })
     res.send({ data, 'message': 'lista reserva detalle' })
   } catch (error) {

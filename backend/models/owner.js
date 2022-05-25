@@ -7,47 +7,41 @@ const mongoose = require('mongoose')
 // Direccion de la base de datos
 // mongoose.connect('')
 
-const SchemaTypes = mongoose.Schema.Types
 
-let OwnerSchema = mongoose.Schema({
+
+const OwnerSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: true
+    // required: true
   },
   password: {
     type: String,
-    required: true
+    // required: true
   },
-  box: {
-    type: String,
-    required: true
-  },
-  stadium: {
-    type: String,
-    required: true
-  },
+
   name: {
     type: String,
-    required: true
+    // required: true
+  },
+ 
+  email:{
+    type: String,
+    // required: true
   },
   dni: {
-    type: Number,
-    required: true
+    type: String,
+    // required: true
   },
-  email:{
-    type: Number,
-    required: true
-  },
+
   phone: {
     type: Number,
-    required: true
+    // required: true
   },
-  booking: {
-    type: SchemaTypes.ObjectId,
-    ref: 'booking'
-  }
+ 
+},{
+  timestamps: true
 })
 
-let OwnerModel = mongoose.model('privateBox', OwnerSchema)
 
-module.exports = { OwnerModel }
+
+module.exports = mongoose.model('owner', OwnerSchema)
