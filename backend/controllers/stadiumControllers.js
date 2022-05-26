@@ -42,7 +42,6 @@ const createStadium = async (req, res) => {
             }
         )
 
-
         res.send({ stadium, 'message': 'Estadio creado' })
 
 
