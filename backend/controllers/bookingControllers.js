@@ -8,6 +8,9 @@ const getBookings = async (req, res) => {
       eventname:1,
       date:1,
       image:1
+    }).populate('user', {
+      name:1,
+      roles:1
     })
     
     res.send({ data, 'message': 'Lista de reservas' })
@@ -27,7 +30,11 @@ const getBooking = async (req, res) => {
       price:1,
       stadium:1,
 
+    }).populate('user', {
+      name:1,
+      roles:1
     })
+    
     res.send({ data, 'message': 'lista reserva detalle' })
   } catch (error) {
     res.status(404).send({ message: 'Error al obtener la reserva' })
